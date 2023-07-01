@@ -116,7 +116,7 @@ class _LogInScreenState extends State<LogInScreen> {
     return Column(
       children: [
         Container(
-          height: 25.0.hp,
+          height: 26.9.hp,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Colors.grey.shade600,
@@ -162,7 +162,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     decoration: InputDecoration(
                       hintText: 'Enter Your Number',
                       contentPadding:
-                          const EdgeInsets.only(left: 10, bottom: 10, top: 0),
+                          EdgeInsets.only(left: 10, bottom: 10.0.sp, top: 0),
                       hintStyle: formhintstyle.copyWith(fontSize: 11.0.sp),
                     ),
                   ),

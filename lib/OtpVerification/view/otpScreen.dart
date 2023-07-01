@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:pin_code_text_field/pin_code_text_field.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import 'personalSuggestion/personalize_suggestion.dart';
+
 class OtpVerification extends StatefulWidget {
   const OtpVerification({super.key});
 
@@ -28,8 +30,9 @@ class _OtpVerificationState extends State<OtpVerification> {
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
                 color: Colors.black87,
-                image:
-                    DecorationImage(image: AssetImage("image/Background.png"))),
+                image: DecorationImage(
+                    image: AssetImage("image/Background.png"),
+                    fit: BoxFit.fill)),
           ),
           Container(
             height: MediaQuery.of(context).size.height,
@@ -54,7 +57,9 @@ class _OtpVerificationState extends State<OtpVerification> {
                                   color: Colors.black,
                                   borderRadius: BorderRadius.circular(3.0.sp)),
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.back();
+                                  },
                                   icon: Icon(
                                     Icons.arrow_back_ios_new,
                                     color: Colors.white,
@@ -97,17 +102,32 @@ class _OtpVerificationState extends State<OtpVerification> {
                   SizedBox(
                     height: 20.0.hp,
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(PersonalizeSuggestion());
+                    },
+                    child: Container(
+                      height: 5.4.hp,
+                      width: MediaQuery.of(context).size.width - 10.0.wp,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Color(0xff4838D1),
+                      ),
+                      child: Text(
+                        "Register",
+                        style: formhintstyle.copyWith(fontSize: 10.0.sp),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.0.hp,
+                  ),
                   Container(
                     height: 5.0.hp,
-                    width: MediaQuery.of(context).size.width - 10.0.wp,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: Colors.blueAccent,
-                        borderRadius: BorderRadius.circular(9.0.sp)),
-                    child: Text(
-                      "Register",
-                      style: formhintstyle.copyWith(fontSize: 10.0.sp),
-                    ),
+                    width: MediaQuery.of(context).size.width,
+                    color: Colors.black,
+                    alignment: Alignment.bottomCenter,
+                    child: dash(),
                   )
                 ],
               ),
@@ -115,6 +135,15 @@ class _OtpVerificationState extends State<OtpVerification> {
           )
         ],
       ),
+    );
+  }
+
+  Widget dash() {
+    return Container(
+      height: .5.hp,
+      width: 40.0.wp,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(10.0.sp)),
     );
   }
 
