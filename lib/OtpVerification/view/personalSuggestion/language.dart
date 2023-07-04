@@ -1,6 +1,9 @@
 import 'package:audio_mela/constant/responsive.dart';
 import 'package:audio_mela/constant/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../homeScreen/view/homemain.dart/screen_1.dart';
 // import 'package:get/get.dart';
 
 class Languages extends StatefulWidget {
@@ -83,7 +86,8 @@ class _LanguagesState extends State<Languages> {
   Widget multiButtons() {
     return GestureDetector(
       onTap: () {
-        // title == "Submit" ? Get.to(const Languages()) : null;
+        Get.to(
+            const HomeScreen()); // title == "Submit" ? Get.to(const Languages()) : null;
       },
       child: Container(
         height: 8.5.hp,
