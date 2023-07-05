@@ -130,7 +130,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
   Widget popularShow() {
     return GestureDetector(
       onTap: () {
-        Get.to(EpisodeScreenNO());
+        Get.to(const EpisodeScreenNO());
       },
       child: Container(
         alignment: Alignment.center,
