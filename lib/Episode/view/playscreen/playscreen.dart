@@ -1,5 +1,7 @@
 import 'package:audio_mela/constant/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../constant/styles.dart';
 import '../../../homeScreen/view/widgets.dart';
@@ -19,7 +21,7 @@ class _PlayScreenState extends State<PlayScreen> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.black87,
+        color: Color(0xff121212),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -29,22 +31,29 @@ class _PlayScreenState extends State<PlayScreen> {
             Container(
               height: 10.0.hp,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
                     width: 17.0.wp,
                     color: Colors.transparent,
                     alignment: Alignment.centerLeft,
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.back();
+                        },
                         icon: Icon(
                           Icons.arrow_back_ios_new_outlined,
                           color: Colors.white,
                         )),
                   ),
-                  Text(
-                    "Harry Potter and the Sorc...",
-                    style: formhintstyle.copyWith(fontSize: 12.0.sp),
+                  Container(
+                    color: Colors.transparent,
+                    height: 4.0.hp,
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      "Harry Potter and the Sorc...",
+                      style: formhintstyle.copyWith(fontSize: 14.0.sp),
+                    ),
                   ),
                   Container(
                       width: 17.0.wp,
@@ -60,7 +69,7 @@ class _PlayScreenState extends State<PlayScreen> {
               ),
             ),
             SizedBox(
-              height: 3.0.hp,
+              height: 2.0.hp,
             ),
             SizedBox(
                 height: 40.0.hp,
@@ -68,7 +77,12 @@ class _PlayScreenState extends State<PlayScreen> {
                 child: bookImage("image/Image Placeholder 240x240.png")),
             bookDetails(context),
             SizedBox(
+              height: 1.5.hp,
+            ),
+            SizedBox(
               child: ProgressBar(
+                thumbRadius: 5.0.sp,
+                baseBarColor: Colors.white,
                 timeLabelTextStyle: formhintstyle,
                 progress: Duration(milliseconds: 1000),
                 buffered: Duration(milliseconds: 2000),
@@ -80,6 +94,9 @@ class _PlayScreenState extends State<PlayScreen> {
               height: 5.0.hp,
               width: 80.0.wp,
             ),
+            SizedBox(
+              height: 1.5.hp,
+            ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: 8.0.hp,
@@ -88,23 +105,29 @@ class _PlayScreenState extends State<PlayScreen> {
                 children: [
                   SizedBox(
                     height: 7.0.hp,
-                    width: 7.0.wp,
+                    width: 6.0.wp,
                     child: Image.asset("image/Volume Up.png"),
                   ),
                   SizedBox(
                     height: 7.0.hp,
-                    width: 7.0.wp,
+                    width: 10.0.wp,
                     child: Image.asset("image/Arrow - Left Circle.png"),
                   ),
-                  CircleAvatar(child: Icon(Icons.play_arrow)),
+                  CircleAvatar(
+                      radius: 22.0.sp,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Iconsax.play4,
+                        color: Colors.black,
+                      )),
                   SizedBox(
                     height: 7.0.hp,
-                    width: 7.0.wp,
+                    width: 10.0.wp,
                     child: Image.asset("image/Arrow - Right Circle.png"),
                   ),
                   SizedBox(
                     height: 7.0.hp,
-                    width: 7.0.wp,
+                    width: 6.0.wp,
                     child: Image.asset("image/Upload.png"),
                   ),
                 ],

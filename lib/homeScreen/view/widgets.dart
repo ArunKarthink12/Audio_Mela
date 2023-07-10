@@ -1,13 +1,18 @@
 import 'package:audio_mela/constant/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant/styles.dart';
 
 Widget bookImage(image) {
   return Container(
-    child: Image.asset(image),
+    color: Colors.amber,
+    child: Image.asset(
+      image,
+      fit: BoxFit.cover,
+    ),
     height: 35.0.hp,
-    width: 60.0.wp,
+    width: 70.0.wp,
   );
 }
 
@@ -23,11 +28,18 @@ Widget bookDetails(context) {
         children: [
           Text(
             "Harry Potter and the Sorcer...",
-            style: formhintstyle.copyWith(fontSize: 14.0.sp),
+            style: formhintstyle.copyWith(fontSize: 16.0.sp),
+          ),
+          SizedBox(
+            height: 0.5.hp,
           ),
           Text(
             "J.K. Rowling",
-            style: formhintstyle.copyWith(fontSize: 10.0.sp),
+            style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                    fontSize: 14.0.sp,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w200)),
           ),
         ],
       ),

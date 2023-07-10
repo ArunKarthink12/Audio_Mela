@@ -29,7 +29,7 @@ class _OtpVerificationState extends State<OtpVerification> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-                color: Colors.black87,
+                color: Color(0xff121212),
                 image: DecorationImage(
                     image: AssetImage("image/Background.png"),
                     fit: BoxFit.fill)),
@@ -70,7 +70,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                           Text(
                             "Verify OTP",
                             style: formhintstyle.copyWith(
-                                color: Colors.white, fontSize: 14.0.sp),
+                                color: Colors.white, fontSize: 18.0.sp),
                           ),
                           Container(
                             height: 5.0.hp,
@@ -87,8 +87,8 @@ class _OtpVerificationState extends State<OtpVerification> {
                       margin: EdgeInsets.only(left: 10.0.sp),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Enter OTP sent to ${controller.mobileNumber.text}",
-                        style: formhintstyle.copyWith(fontSize: 12.0.sp),
+                        "Enter OTP sent on ${controller.mobileNumber.text}",
+                        style: formhintstyle.copyWith(fontSize: 14.0.sp),
                       )),
                   pinField(),
                   Container(
@@ -96,7 +96,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                     margin: EdgeInsets.only(left: 10.0.sp),
                     child: Text(
                       "Resend in 0:25 secs",
-                      style: formhintstyle.copyWith(fontSize: 12.0.sp),
+                      style: formhintstyle.copyWith(fontSize: 16.0.sp),
                     ),
                   ),
                   SizedBox(
@@ -111,24 +111,25 @@ class _OtpVerificationState extends State<OtpVerification> {
                       width: MediaQuery.of(context).size.width - 10.0.wp,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0.sp),
                         color: Color(0xff4838D1),
                       ),
                       child: Text(
                         "Register",
-                        style: formhintstyle.copyWith(fontSize: 10.0.sp),
+                        style: formhintstyle.copyWith(fontSize: 14.0.sp),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: 2.0.hp,
+                    height: 6.0.hp,
                   ),
-                  Container(
-                    height: 5.0.hp,
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.black,
-                    alignment: Alignment.bottomCenter,
-                    child: dash(),
-                  )
+                  // Container(
+                  //   height: 5.0.hp,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   color: Colors.black,
+                  //   alignment: Alignment.bottomCenter,
+                  //   // child: dash(),
+                  // )
                 ],
               ),
             ),
@@ -138,14 +139,14 @@ class _OtpVerificationState extends State<OtpVerification> {
     );
   }
 
-  Widget dash() {
-    return Container(
-      height: .5.hp,
-      width: 40.0.wp,
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(10.0.sp)),
-    );
-  }
+  // Widget dash() {
+  //   return Container(
+  //     height: .5.hp,
+  //     width: 40.0.wp,
+  //     decoration: BoxDecoration(
+  //         color: Colors.white, borderRadius: BorderRadius.circular(10.0.sp)),
+  //   );
+  // }
 
   Widget pinField() {
     return Padding(
@@ -175,7 +176,7 @@ class _OtpVerificationState extends State<OtpVerification> {
           fieldHeight: 7.0.hp,
           fieldWidth: 15.0.wp,
           activeColor: Colors.white,
-          selectedFillColor: Colors.grey.shade500,
+          selectedFillColor: Color(0xff212121),
           selectedColor: Colors.white,
           inactiveColor: Colors.white,
           inactiveFillColor: Colors.white,

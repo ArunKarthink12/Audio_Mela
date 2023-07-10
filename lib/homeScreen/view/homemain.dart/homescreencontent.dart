@@ -4,6 +4,7 @@ import 'package:audio_mela/constant/styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../constant/colors.dart';
 
@@ -76,7 +77,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         Text(
           "See more",
           style: formhintstyle.copyWith(
-              color: Color(0xffBBB1FA), fontSize: 11.0.sp),
+              color: Color(0xffBBB1FA), fontSize: 13.0.sp),
         )
       ],
     );
@@ -86,23 +87,26 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        color: Colors.black87,
+        color: Color(0xff121212),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
               topic("Categories"),
               SizedBox(
-                height: 1.0.hp,
+                height: 2.0.hp,
               ),
               categories(),
+              SizedBox(
+                height: 2.0.hp,
+              ),
               banner(),
               SizedBox(
-                height: 1.0.hp,
+                height: 2.0.hp,
               ),
               topic("Popular show"),
               Container(
-                height: 30.0.hp,
+                height: 25.0.hp,
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -116,10 +120,16 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                     itemCount: 10),
               ),
               SizedBox(
-                height: 1.0.hp,
+                height: 2.0.hp,
               ),
               topic("Recommended For You"),
+              SizedBox(
+                height: 2.0.hp,
+              ),
               banner(),
+              SizedBox(
+                height: 8.0.hp,
+              ),
             ],
           ),
         ),
@@ -133,44 +143,56 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         Get.to(const EpisodeScreenNO());
       },
       child: Container(
-        alignment: Alignment.center,
+        width: 25.0.wp,
+        // alignment: Alignment.center,
         child: Column(
           children: [
             SizedBox(
-              height: 20.0.hp,
-              width: 30.0.wp,
+              height: 14.0.hp,
+              //  122,
+              // 20.0.hp,
+              width: 25.0.wp,
+              // 122,
+              // 30.0.wp,
               child: Image.network(
                   'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
+            SizedBox(
+              width: 25.0.wp,
+              child: SizedBox(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "You are your \nonly limit",
-                      style: formhintstyle,
+                      style: formhintstyle.copyWith(fontSize: 10.0.sp),
                     ),
                     SizedBox(
                       height: 0.5.hp,
                     ),
-                    Text(
-                      "Episord-1",
-                      style: formhintstyle.copyWith(color: Colors.white30),
+                    Row(
+                      children: [
+                        Text(
+                          "Episord-1",
+                          style: formhintstyle.copyWith(
+                              color: Color(0xffA8A8A8), fontSize: 10.0.sp),
+                        ),
+                        SizedBox(
+                          width: 0.5.wp,
+                        ),
+                        CircleAvatar(
+                          backgroundColor: arrow,
+                          radius: 12.0.sp,
+                          child: Icon(
+                            Iconsax.play4,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                CircleAvatar(
-                  backgroundColor: arrow,
-                  radius: 14.0.sp,
-                  child: Icon(
-                    Icons.play_arrow,
-                    color: Colors.white,
-                  ),
-                )
-              ],
+              ),
             )
           ],
         ),
@@ -258,17 +280,20 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                           children: [
                             Text(
                               'Safe Area \nwith Young',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
+                              style: formhintstyle.copyWith(
+                                fontSize: 16.0.sp,
                               ),
+                              // TextStyle(
+                              //   color: Colors.white,
+
+                              //   fontWeight: FontWeight.bold,
+                              // ),
                             ),
                             CircleAvatar(
                               backgroundColor: arrow,
                               radius: 14.0.sp,
                               child: Icon(
-                                Icons.play_arrow,
+                                Iconsax.play4,
                                 color: Colors.white,
                               ),
                             )

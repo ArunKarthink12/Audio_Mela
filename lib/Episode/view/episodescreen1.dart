@@ -2,9 +2,13 @@ import 'package:audio_mela/Episode/view/playscreen/playscreen.dart';
 import 'package:audio_mela/constant/colors.dart';
 import 'package:audio_mela/constant/responsive.dart';
 import 'package:audio_mela/constant/styles.dart';
+import 'package:audio_mela/premium/view/premium.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../homeScreen/view/widgets.dart';
 
@@ -23,12 +27,15 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
     return Scaffold(
       bottomNavigationBar: playBook == true
           ? Container(
-              height: 15.0.hp,
+              height: 11.0.hp,
               width: MediaQuery.of(context).size.width,
               color: appcolor,
               child: Column(
                 children: [
                   ProgressBar(
+                    thumbRadius: 1,
+                    bufferedBarColor: Colors.white,
+                    baseBarColor: Colors.white,
                     timeLabelTextStyle: TextStyle(color: Colors.transparent),
                     progress: Duration(milliseconds: 1000),
                     buffered: Duration(milliseconds: 2000),
@@ -44,22 +51,34 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                       SizedBox(
                           height: 8.0.hp,
                           width: 16.0.wp,
-                          child: Image.asset("")),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "QWERTYUIOPOIUYFD",
-                            style: formhintstyle,
-                          ),
-                          Text(
-                            "wertghjhgvc",
-                            style: formhintstyle,
-                          )
-                        ],
+                          child:
+                              Image.asset("image/Image Placeholder 2 (4).png")),
+                      SizedBox(
+                        height: 8.0.hp,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              "Harry Potter and the...",
+                              style: formhintstyle.copyWith(fontSize: 14.0.sp),
+                            ),
+                            Text("J.K. Rowling",
+                                style: GoogleFonts.poppins(
+                                    textStyle: TextStyle(
+                                        fontSize: 13.0.sp,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w200))
+                                // formhintstyle.copyWith(color: Colors.white24),
+                                )
+                          ],
+                        ),
                       ),
                       CircleAvatar(
-                        child: Icon(Icons.play_arrow),
+                        backgroundColor: Colors.white,
+                        child: Icon(
+                          Iconsax.play4,
+                        ),
                       ),
                       GestureDetector(
                           onTap: () {
@@ -67,7 +86,10 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                               playBook = false;
                             });
                           },
-                          child: Icon(Icons.close))
+                          child: Icon(
+                            Icons.close,
+                            color: Colors.white24,
+                          ))
                     ],
                   ))
                 ],
@@ -77,7 +99,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.black87,
+        color: Color(0xff121212),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,22 +110,29 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
               Container(
                 height: 10.0.hp,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       width: 17.0.wp,
                       color: Colors.transparent,
                       alignment: Alignment.centerLeft,
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.back();
+                          },
                           icon: Icon(
                             Icons.arrow_back_ios_new_outlined,
                             color: Colors.white,
                           )),
                     ),
-                    Text(
-                      "Harry Potter and the Sorc...",
-                      style: formhintstyle.copyWith(fontSize: 12.0.sp),
+                    Container(
+                      color: Colors.transparent,
+                      height: 4.0.hp,
+                      alignment: Alignment.bottomCenter,
+                      child: Text(
+                        "Harry Potter and the Sorc...",
+                        style: formhintstyle.copyWith(fontSize: 14.0.sp),
+                      ),
                     ),
                     Container(
                         width: 17.0.wp,
@@ -118,13 +147,13 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 3.0.hp,
-              ),
-              bookImage("image/Image Placeholder 240x240.png"),
               // SizedBox(
-              //   height: 3.0.hp,
+              //   height: 1.0.hp,
               // ),
+              bookImage("image/Image Placeholder 240x240.png"),
+              SizedBox(
+                height: 1.5.hp,
+              ),
               bookDetails(context),
               categories(),
               SizedBox(
@@ -133,31 +162,35 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  buttonz(Icons.play_arrow, "Play Audio", Color(0xff4838D1),
+                  buttonz(Iconsax.play_circle, "Play Audio", Color(0xff4838D1),
                       Colors.transparent),
                   SizedBox(
                     width: 10.0.wp,
                   ),
-                  buttonz(Icons.bookmark, "Bookmark", Colors.transparent,
-                      Colors.white),
+                  buttonz(Icons.bookmark_border_outlined, "Bookmark",
+                      Colors.transparent, Colors.white),
                 ],
               ),
               SizedBox(
                 height: 2.0.hp,
               ),
               Container(
-                height: 4.0.hp,
+                // height: 4.0.hp,
                 width: MediaQuery.of(context).size.width,
                 margin: EdgeInsets.only(left: 22.0.sp),
                 color: Colors.transparent,
                 child: Text(
                   "Episodes",
-                  style: formhintstyle.copyWith(fontSize: 12.0.sp),
+                  style: formhintstyle.copyWith(fontSize: 18.0.sp),
                 ),
+              ),
+              SizedBox(
+                height: 2.0.hp,
               ),
               SizedBox(
                 height: 35.0.hp,
                 child: ListView.separated(
+                  padding: EdgeInsets.zero,
                   separatorBuilder: (context, index) {
                     return SizedBox(
                       height: 2.0.wp,
@@ -168,7 +201,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                   // physics: NeverScrollableScrollPhysics(),
                   // scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
-                    return episodeList();
+                    return episodeList(index);
                   },
                 ),
               ),
@@ -179,19 +212,34 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
     );
   }
 
-  Widget episodeList() {
+  Widget episodeList(index) {
     return Container(
       decoration: BoxDecoration(
           color: appcolor.withOpacity(0.9),
           borderRadius: BorderRadius.circular(7.0.sp)),
       width: MediaQuery.of(context).size.width,
       child: ListTile(
-        leading: SizedBox(
-          height: 35.0.hp,
-          child: Image.asset(
-            "image/banner.png",
-            fit: BoxFit.cover,
-          ),
+        leading: Stack(
+          children: [
+            SizedBox(
+              height: 35.0.hp,
+              child: Image.asset(
+                "image/banner.png",
+                fit: BoxFit.cover,
+              ),
+            ),
+            Visibility(
+              visible: index == 0 ? false : true,
+              child: Container(
+                child: Image.asset(
+                  "image/lock.png",
+                  fit: BoxFit.cover,
+                ),
+                height: 35.0.hp,
+                width: 26.0.wp,
+              ),
+            ),
+          ],
         ),
         title: Text(
           "The Black Witch",
@@ -204,14 +252,15 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         trailing: GestureDetector(
           onTap: () {
             setState(() {
-              playBook = true;
+              index == 0 ? playBook = true : Get.to(const PremiumScreen());
+              // Fluttertoast.showToast(msg: "Locked");
             });
           },
           child: CircleAvatar(
             backgroundColor: arrow,
             radius: 14.0.sp,
             child: Icon(
-              Icons.play_arrow,
+              Iconsax.play4,
               color: Colors.white,
             ),
           ),
@@ -223,10 +272,10 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
   Widget categories() {
     return Container(
       margin: EdgeInsets.only(left: 22.0.sp),
-      height: 5.0.hp,
+      height: 4.0.hp,
       width: MediaQuery.of(context).size.width,
       child: ListView.separated(
-        itemCount: 10,
+        itemCount: 3,
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         separatorBuilder: (context, index) {
@@ -236,17 +285,16 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         },
         itemBuilder: (context, index) {
           return Container(
+            height: 3.0.hp,
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 0.5.wp),
+                borderRadius: BorderRadius.circular(20.0.sp)),
+            width: 20.0.wp,
             alignment: Alignment.center,
             child: Text(
-              "$index",
-              style: formhintstyle,
+              "1",
+              style: formhintstyle.copyWith(fontSize: 9.0.sp),
             ),
-            height: 5.0.hp,
-            width: 20.0.wp,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                border: Border.all(color: Colors.white, width: 1),
-                borderRadius: BorderRadius.circular(10.0.sp)),
           );
         },
       ),
@@ -259,7 +307,9 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         title == "Play Audio" ? Get.to(PlayScreen()) : null;
       },
       child: Container(
-        height: 10.0.hp,
+        height:
+            //  53,
+            6.7.hp,
         width: MediaQuery.of(context).size.width / 2 - 10.0.wp,
         alignment: Alignment.center,
         child: Row(

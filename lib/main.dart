@@ -52,7 +52,7 @@ class _LogInScreenState extends State<LogInScreen> {
           child: Stack(
             children: [
               Container(
-                color: Colors.black87,
+                color: Color(0xff121212),
               ),
               Container(
                 height: MediaQuery.of(context).size.height,
@@ -64,18 +64,35 @@ class _LogInScreenState extends State<LogInScreen> {
                     // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        height: 5.0.hp,
+                        height: 12.0.hp,
                       ),
                       SizedBox(
                           height: 20.0.hp,
                           width: 40.0.wp,
-                          child: Image.asset('image/Group 13326.png')),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                  height: 10.0.hp,
+                                  width: 25.0.wp,
+                                  child: Image.asset("image/Logos.png")),
+                              SizedBox(
+                                height: 1.0.hp,
+                              ),
+                              Image.asset("image/Easybooks.png"),
+                            ],
+                          )
+                          // Image.asset('image/Group 13326.png')
+                          ),
                       SizedBox(
-                        height: 2.0.hp,
+                        height: .5.hp,
                       ),
                       SizedBox(
-                          height: 30.0.hp,
-                          width: 60.0.wp,
+                          height:
+                              // 220,
+                              39.0.hp,
+                          width:
+                              // 220,
+                              65.0.wp,
                           child: Image.asset('image/Artwork.png')),
                       SizedBox(
                         height: 2.0.hp,
@@ -94,7 +111,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       SizedBox(
                         height: 2.5.hp,
                       ),
-                      dash()
+                      // dash()
                     ],
                   ),
                 ),
@@ -104,24 +121,27 @@ class _LogInScreenState extends State<LogInScreen> {
         ));
   }
 
-  Widget dash() {
-    return Container(
-      height: .5.hp,
-      width: 40.0.wp,
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(10.0.sp)),
-    );
-  }
+  // Widget dash() {
+  //   return Container(
+  //     height: .5.hp,
+  //     width: 40.0.wp,
+  //     decoration: BoxDecoration(
+  //         color: Colors.white, borderRadius: BorderRadius.circular(10.0.sp)),
+  //   );
+  // }
 
   Widget detailsContainer() {
     return Column(
       children: [
         Container(
-          height: 26.9.hp,
+          height:
+              //  208,
+              34.0.hp,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: Colors.grey.shade600,
+            color: Color(0xff212121),
           ),
+          alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,13 +153,14 @@ class _LogInScreenState extends State<LogInScreen> {
                   child: Text(
                     "Enter Details",
                     style: formhintstyle.copyWith(
-                        color: const Color(0xffAAAAAA), fontSize: 12.0.sp),
+                        color: const Color(0xffAAAAAA), fontSize: 15.0.sp),
                   )),
-              Align(
-                alignment: Alignment.center,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 5.0.hp,
-                  width: MediaQuery.of(context).size.width - 10.0.wp,
+                  height: 7.0.hp,
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.all(14.0.sp),
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(6.0.sp)),
@@ -155,15 +176,18 @@ class _LogInScreenState extends State<LogInScreen> {
 
                     keyboardType: TextInputType.number,
                     onFieldSubmitted: (v) {
-                      v.length != 10 ? _submit : Get.to(OtpVerification());
+                      v.length != 10
+                          ? Fluttertoast.showToast(
+                              msg: "Number should Be 10 Digits")
+                          : Get.to(OtpVerification());
                     },
                     controller: controller.mobileNumber,
                     style: formhintstyle.copyWith(
                         color: Colors.white, fontSize: 11.0.sp),
-                    decoration: InputDecoration(
+                    decoration: new InputDecoration.collapsed(
                       hintText: 'Enter Your Number',
-                      contentPadding:
-                          EdgeInsets.only(left: 10, bottom: 10.0.sp, top: 0),
+                      // contentPadding:
+                      //     EdgeInsets.only(left: 10, bottom: 10.0.sp, top: 0),
                       hintStyle: formhintstyle.copyWith(fontSize: 11.0.sp),
                     ),
                   ),
@@ -177,7 +201,7 @@ class _LogInScreenState extends State<LogInScreen> {
                   '''By Signing in, you agreed to our\n“Terms of Use” & “Privacy Policy” ''',
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  style: formhintstyle,
+                  style: formhintstyle.copyWith(fontSize: 10.0.sp),
                 ),
               ),
             ],

@@ -6,8 +6,12 @@ import 'package:audio_mela/homeScreen/view/homemain.dart/libraryscreen.dart';
 import 'package:audio_mela/homeScreen/view/homemain.dart/searchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../settings/view/settings.dart';
+// import 'package:get/get.dart';
+
+// import '../../../settings/view/settings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -45,23 +49,40 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.home_filled,
-                      color: Colors.white,
-                    ),
+                    icon: currentindex == 0
+                        ? SizedBox(
+                            height: 3.0.hp,
+                            width: 5.0.wp,
+                            child: Image.asset(
+                              "image/Home.png",
+                            ))
+                        : SizedBox(
+                            height: 4.0.hp,
+                            width: 6.0.wp,
+                            child: Image.asset("image/unselectHome.png")),
                     label: "Home"),
                 BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
+                  icon: currentindex == 1
+                      ? SizedBox(
+                          height: 4.0.hp,
+                          width: 6.0.wp,
+                          child: Image.asset("image/selectedSearch.png"))
+                      : SizedBox(
+                          height: 4.0.hp,
+                          width: 6.0.wp,
+                          child: Image.asset("image/unselectSearch.png")),
                   label: "Search",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.notes_outlined,
-                    color: Colors.white,
-                  ),
+                  icon: currentindex == 2
+                      ? SizedBox(
+                          height: 4.0.hp,
+                          width: 6.0.wp,
+                          child: Image.asset("image/Document.png"))
+                      : SizedBox(
+                          height: 4.0.hp,
+                          width: 6.0.wp,
+                          child: Image.asset("image/unselectDocument.png")),
                   label: "Library",
                   backgroundColor: Colors.white,
                 )
@@ -70,20 +91,33 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           actions: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Get.to(const SettingsScreen());
-                },
-              ),
-            )
+                padding: EdgeInsets.all(10.0.sp),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.to(const SettingsScreen());
+                  },
+                  child: SizedBox(
+                    height: 7.0.hp,
+                    width: 7.0.wp,
+                    child: Image.asset("image/Setting.png"),
+                  ),
+                )
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.settings,
+                //     color: Colors.white,
+                //   ),
+                //   onPressed: () {
+                //     Get.to(const SettingsScreen());
+                //   },
+                // ),
+                )
           ],
+          foregroundColor: Color(0xff121212),
+          surfaceTintColor: Color(0xff121212),
+          shadowColor: Color(0xff121212),
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.black87,
+          backgroundColor: Color(0xff121212),
           title: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -94,15 +128,32 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 width: 2.0.wp,
               ),
-              RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: "Audio",
-                      style: inter.copyWith(
-                          color: Color(0xff4838D1), fontSize: 18.0.sp)),
-                  TextSpan(
-                      text: "mela", style: inter.copyWith(fontSize: 18.0.sp))
-                ]),
+              Container(
+                height: 10.0.hp,
+                color: Colors.transparent,
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(top: 10.0.sp),
+                // width: 10.0.wp,
+                child: RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: "Audio",
+                        style: GoogleFonts.inter(
+                            color: Color(0xff4838D1),
+                            fontSize: 18.0.sp,
+                            letterSpacing:
+                                1.6, // fontSize: 8.0.sp, color: Colors.white,
+                            fontWeight: FontWeight.w700)),
+                    // inter.copyWith(
+                    //     color: Color(0xff4838D1),
+                    //     fontSize: 18.0.sp,
+                    //     letterSpacing: 1.6)),
+                    TextSpan(
+                        text: currentindex == 2 ? "book" : "mela",
+                        style: inter.copyWith(
+                            fontSize: 18.0.sp, letterSpacing: 1.6))
+                  ]),
+                ),
               )
             ],
           ),
