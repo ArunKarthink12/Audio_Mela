@@ -1,4 +1,5 @@
 import 'package:audio_mela/OtpVerification/controller/controller.dart';
+import 'package:audio_mela/constant/colors.dart';
 import 'package:audio_mela/constant/responsive.dart';
 import 'package:audio_mela/constant/styles.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _OtpVerificationState extends State<OtpVerification> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 7.0.hp,
+                    height: 8.0.hp,
                   ),
                   Container(
                     child: Row(
@@ -50,12 +51,12 @@ class _OtpVerificationState extends State<OtpVerification> {
                           Padding(
                             padding: EdgeInsets.only(right: 12.0.sp),
                             child: Container(
-                              height: 5.0.hp,
+                              height: 5.3.hp,
                               width: 10.0.wp,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                   color: Colors.black,
-                                  borderRadius: BorderRadius.circular(3.0.sp)),
+                                  borderRadius: BorderRadius.circular(5.0.sp)),
                               child: IconButton(
                                   onPressed: () {
                                     Get.back();
@@ -63,14 +64,20 @@ class _OtpVerificationState extends State<OtpVerification> {
                                   icon: Icon(
                                     Icons.arrow_back_ios_new,
                                     color: Colors.white,
-                                    size: 13.0.sp,
+                                    size: 12.0.sp,
                                   )),
                             ),
+                          ),
+                          SizedBox(
+                            width: .5.wp,
                           ),
                           Text(
                             "Verify OTP",
                             style: formhintstyle.copyWith(
                                 color: Colors.white, fontSize: 18.0.sp),
+                          ),
+                          SizedBox(
+                            width: .5.wp,
                           ),
                           Container(
                             height: 5.0.hp,
@@ -154,9 +161,8 @@ class _OtpVerificationState extends State<OtpVerification> {
       child: PinCodeTextField(
         appContext: context,
         textStyle: GoogleFonts.inter(
-            textStyle: TextStyle(
-                fontSize: MediaQuery.of(context).size.height * 0.02,
-                fontWeight: FontWeight.w600)),
+            textStyle:
+                TextStyle(fontSize: 18.0.sp, fontWeight: FontWeight.w600)),
         pastedTextStyle: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
@@ -172,12 +178,13 @@ class _OtpVerificationState extends State<OtpVerification> {
 
         pinTheme: PinTheme(
           shape: PinCodeFieldShape.box,
-          borderRadius: BorderRadius.circular(5),
-          fieldHeight: 7.0.hp,
+          selectedBorderWidth: 1,
+          borderRadius: BorderRadius.circular(8),
+          fieldHeight: 7.6.hp,
           fieldWidth: 15.0.wp,
           activeColor: Colors.white,
           selectedFillColor: Color(0xff212121),
-          selectedColor: Colors.white,
+          selectedColor: Colors.blue,
           inactiveColor: Colors.white,
           inactiveFillColor: Colors.white,
           activeFillColor: hasError ? Colors.white : Colors.white,

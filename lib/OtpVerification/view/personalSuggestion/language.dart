@@ -74,10 +74,12 @@ class _LanguagesState extends State<Languages> {
                     ),
                     height:
                         // 53,
-                        7.0.hp,
+                        7.8.hp,
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.centerLeft,
-                    color: Color(0xff1C1C4D),
+                    decoration: BoxDecoration(
+                        color: Color(0xff1C1C4D),
+                        borderRadius: BorderRadius.circular(5.0.sp)),
                   ),
                   SizedBox(
                     height: 3.0.hp,
@@ -204,7 +206,7 @@ class _LanguagesState extends State<Languages> {
             alignment: Alignment.center,
             child: Text(
               cate[index].toString(),
-              style: formhintstyle.copyWith(fontSize: 9.0.sp),
+              style: formhintstyle.copyWith(fontSize: 10.0.sp),
             ),
           );
         },
@@ -223,7 +225,7 @@ class _LanguagesState extends State<Languages> {
         width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Color(0xff1C1C4D),
+            color: Color(0xff4838D1),
             borderRadius: BorderRadius.circular(4.0.sp)),
         child: Text(
           "Save",

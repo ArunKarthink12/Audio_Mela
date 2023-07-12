@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
               showSelectedLabels: true,
               // selectedLabelStyle: formhintstyle.copyWith(color: Colors.white),
               // unselectedLabelStyle: formhintstyle.copyWith(color: Colors.white),
-              backgroundColor: appcolor,
+              backgroundColor: Color(0xff0F0F29),
               currentIndex: currentindex,
               selectedItemColor: Colors.white,
               unselectedItemColor: Color(0xffBBB1FA),

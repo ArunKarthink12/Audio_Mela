@@ -143,15 +143,16 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         Get.to(const EpisodeScreenNO());
       },
       child: Container(
+        // height: 9.0.hp,
         width: 25.0.wp,
         // alignment: Alignment.center,
         child: Column(
           children: [
             SizedBox(
-              height: 14.0.hp,
-              //  122,
-              // 20.0.hp,
-              width: 25.0.wp,
+              // height: 14.0.hp,
+              // //  122,
+              // // 20.0.hp,
+              // width: 25.0.wp,
               // 122,
               // 30.0.wp,
               child: Image.network(
@@ -290,13 +291,14 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                               // ),
                             ),
                             CircleAvatar(
-                              backgroundColor: arrow,
-                              radius: 14.0.sp,
-                              child: Icon(
-                                Iconsax.play4,
-                                color: Colors.white,
-                              ),
-                            )
+                                backgroundColor: arrow,
+                                radius: 14.0.sp,
+                                child: Image.asset("image/playarrow.png")
+                                // Icon(
+                                //   Iconsax.play4,
+                                //   color: Colors.white,
+                                // ),
+                                )
                           ],
                         ),
                       ),

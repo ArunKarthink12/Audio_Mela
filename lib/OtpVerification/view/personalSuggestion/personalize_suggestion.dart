@@ -73,10 +73,12 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
                     ),
                     height:
                         // 53,
-                        7.0.hp,
+                        7.8.hp,
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.centerLeft,
-                    color: Color(0xff1C1C4D),
+                    decoration: BoxDecoration(
+                        color: Color(0xff1C1C4D),
+                        borderRadius: BorderRadius.circular(5.0.sp)),
                   ),
                   SizedBox(
                     height: 3.0.hp,
@@ -87,8 +89,8 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
                   ),
                   multiButtons(
                     "Submit",
-                    Color(0xff1C1C4D),
-                    Colors.white.withOpacity(0.5),
+                    Color(0xff4838D1),
+                    Color(0xffFFFFFF).withOpacity(0.5),
                     Color(0xff1C1C4D),
                   ),
                   SizedBox(

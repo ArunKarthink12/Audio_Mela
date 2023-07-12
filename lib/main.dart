@@ -158,9 +158,9 @@ class _LogInScreenState extends State<LogInScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: 7.0.hp,
+                  height: 8.0.hp,
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(14.0.sp),
+                  padding: EdgeInsets.all(10.0.sp),
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(6.0.sp)),
@@ -201,7 +201,8 @@ class _LogInScreenState extends State<LogInScreen> {
                   '''By Signing in, you agreed to our\n“Terms of Use” & “Privacy Policy” ''',
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  style: formhintstyle.copyWith(fontSize: 10.0.sp),
+                  style: formhintstyle.copyWith(
+                      fontSize: 10.0.sp, color: Color(0xffAAAAAA)),
                 ),
               ),
             ],
