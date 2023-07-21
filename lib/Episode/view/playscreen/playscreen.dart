@@ -82,6 +82,8 @@ class _PlayScreenState extends State<PlayScreen> {
             SizedBox(
               child: ProgressBar(
                 thumbRadius: 5.0.sp,
+                thumbColor: Color(0xff4838D1),
+                progressBarColor: Color(0xff4838D1),
                 baseBarColor: Colors.white,
                 timeLabelTextStyle: formhintstyle,
                 progress: Duration(milliseconds: 1000),
@@ -113,13 +115,19 @@ class _PlayScreenState extends State<PlayScreen> {
                     width: 10.0.wp,
                     child: Image.asset("image/Arrow - Left Circle.png"),
                   ),
-                  CircleAvatar(
-                      radius: 22.0.sp,
-                      backgroundColor: Colors.white,
-                      child: Icon(
-                        Iconsax.play4,
-                        color: Colors.black,
-                      )),
+                  Container(
+                    height: 20.0.hp,
+                    width: 15.0.wp,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                              "image/circleplay.png",
+                            )),
+                        shape: BoxShape.circle),
+                    // radius: 25.0.sp,
+                    // backgroundColor: Colors.transparent,
+                  ),
                   SizedBox(
                     height: 7.0.hp,
                     width: 10.0.wp,

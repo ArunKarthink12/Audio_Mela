@@ -9,7 +9,7 @@ final inter = GoogleFonts.inter(
     textStyle: TextStyle(
         fontSize: 8.0.sp, color: Colors.white, fontWeight: FontWeight.w500));
 final settings = GoogleFonts.poppins(
-    color: Colors.white, fontSize: 12.0.sp, fontWeight: FontWeight.w300);
+    color: Colors.white, fontSize: 11.0.sp, fontWeight: FontWeight.w300);
 final sub = GoogleFonts.jost(
     textStyle: TextStyle(
         fontSize: 8.0.sp, color: Colors.white, fontWeight: FontWeight.w500));

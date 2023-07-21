@@ -105,8 +105,11 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                 height: 2.0.hp,
               ),
               topic("Popular show"),
+              SizedBox(
+                height: 2.0.hp,
+              ),
               Container(
-                height: 25.0.hp,
+                height: 33.0.hp,
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -143,23 +146,35 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         Get.to(const EpisodeScreenNO());
       },
       child: Container(
-        // height: 9.0.hp,
-        width: 25.0.wp,
+        height: 150,
+        //  9.0.hp,
+        width: 31.0.wp,
+        // 25.0.wp,
         // alignment: Alignment.center,
         child: Column(
           children: [
-            SizedBox(
-              // height: 14.0.hp,
-              // //  122,
-              // // 20.0.hp,
-              // width: 25.0.wp,
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0.sp),
+                  image: const DecorationImage(
+                      image: NetworkImage(
+                        'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
+                      ),
+                      fit: BoxFit.cover)),
+              height: 18.0.hp,
               // 122,
+              // // 20.0.hp,
+              width: 30.5.wp,
+              // 110,
               // 30.0.wp,
-              child: Image.network(
-                  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'),
+              // child: Image.network(
+
+              //   fit: BoxFit.cover,
+              // ),
             ),
             SizedBox(
-              width: 25.0.wp,
+              // width: 30..wp,
+              //  25.0.wp,
               child: SizedBox(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,21 +189,22 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                     Row(
                       children: [
                         Text(
-                          "Episord-1",
+                          "Episode-1",
                           style: formhintstyle.copyWith(
                               color: Color(0xffA8A8A8), fontSize: 10.0.sp),
                         ),
                         SizedBox(
-                          width: 0.5.wp,
+                          width: 6.0.wp,
                         ),
-                        CircleAvatar(
-                          backgroundColor: arrow,
-                          radius: 12.0.sp,
-                          child: Icon(
-                            Iconsax.play4,
-                            color: Colors.white,
-                          ),
-                        ),
+                        Container(
+                          height: 4.0.hp,
+                          width: 6.0.wp,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage("image/sniparrow.png"),
+                                  fit: BoxFit.cover)),
+                        )
                       ],
                     ),
                   ],
@@ -227,7 +243,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
             width: 20.0.wp,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: appcolor, borderRadius: BorderRadius.circular(3.0.sp)),
+                color: appcolor, borderRadius: BorderRadius.circular(7.0.sp)),
             child: Text(
               categorylist[index].toString(),
               style: formhintstyle.copyWith(fontSize: 10.0.sp),
@@ -279,26 +295,47 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Safe Area \nwith Young',
-                              style: formhintstyle.copyWith(
-                                fontSize: 16.0.sp,
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors
+                                        .white, // Change the color as per your requirement
+                                    width: 1.0, // Adjust the width as needed
+                                  ),
+                                ),
                               ),
-                              // TextStyle(
-                              //   color: Colors.white,
-
-                              //   fontWeight: FontWeight.bold,
-                              // ),
-                            ),
-                            CircleAvatar(
-                                backgroundColor: arrow,
-                                radius: 14.0.sp,
-                                child: Image.asset("image/playarrow.png")
-                                // Icon(
-                                //   Iconsax.play4,
+                              child: Text(
+                                'Safe Area \nwith Young',
+                                style: formhintstyle.copyWith(
+                                  fontSize: 12.0.sp,
+                                ),
+                                // TextStyle(
                                 //   color: Colors.white,
+
+                                //   fontWeight: FontWeight.bold,
                                 // ),
-                                )
+                              ),
+                            ),
+                            Container(
+                              height: 8.0.hp,
+                              width: 9.7.wp,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage("image/sniparrow.png"),
+                                      fit: BoxFit.cover)),
+                            )
+                            // CircleAvatar(
+                            //   backgroundColor: arrow,
+                            //   radius: 14.0.sp,
+                            //   child:
+                            //       //  Image.asset("image/playarrow.png")
+                            //       Icon(
+                            //     Iconsax.play4,
+                            //     color: Colors.white,
+                            //   ),
+                            // )
                           ],
                         ),
                       ),

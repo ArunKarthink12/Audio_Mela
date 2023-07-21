@@ -72,7 +72,7 @@ class _LogInScreenState extends State<LogInScreen> {
                           child: Column(
                             children: [
                               SizedBox(
-                                  height: 10.0.hp,
+                                  height: 8.0.hp,
                                   width: 25.0.wp,
                                   child: Image.asset("image/Logos.png")),
                               SizedBox(
@@ -89,7 +89,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       SizedBox(
                           height:
                               // 220,
-                              39.0.hp,
+                              30.0.hp,
                           width:
                               // 220,
                               65.0.wp,
@@ -136,7 +136,7 @@ class _LogInScreenState extends State<LogInScreen> {
         Container(
           height:
               //  208,
-              34.0.hp,
+              30.0.hp,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Color(0xff212121),
@@ -156,11 +156,11 @@ class _LogInScreenState extends State<LogInScreen> {
                         color: const Color(0xffAAAAAA), fontSize: 15.0.sp),
                   )),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(6.0),
                 child: Container(
-                  height: 8.0.hp,
+                  height: 6.8.hp,
                   width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.all(10.0.sp),
+                  padding: EdgeInsets.all(7.0.sp),
                   decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(6.0.sp)),

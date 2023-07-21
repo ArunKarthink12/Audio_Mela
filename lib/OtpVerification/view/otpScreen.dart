@@ -87,7 +87,7 @@ class _OtpVerificationState extends State<OtpVerification> {
                         ]),
                   ),
                   SizedBox(
-                      height: 40.0.hp,
+                      height: 35.0.hp,
                       width: 80.0.wp,
                       child: Image.asset("image/Forgot password-rafiki 1.png")),
                   Container(

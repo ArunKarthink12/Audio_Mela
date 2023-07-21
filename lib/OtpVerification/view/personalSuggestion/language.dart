@@ -1,3 +1,4 @@
+import 'package:audio_mela/constant/colors.dart';
 import 'package:audio_mela/constant/responsive.dart';
 import 'package:audio_mela/constant/styles.dart';
 import 'package:flutter/material.dart';
@@ -183,6 +184,9 @@ class _LanguagesState extends State<Languages> {
     "Kannada",
     "Spanish"
   ];
+  var selectedIndex;
+  var selectedcolor = appcolor;
+
   Widget categoryList() {
     return Container(
       height: 30.0.hp,
@@ -197,16 +201,27 @@ class _LanguagesState extends State<Languages> {
             mainAxisSpacing: 12,
             childAspectRatio: 3),
         itemBuilder: (context, index) {
-          return Container(
-            height: 3.0.hp,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 0.5.wp),
-                borderRadius: BorderRadius.circular(20.0.sp)),
-            width: 5.0.wp,
-            alignment: Alignment.center,
-            child: Text(
-              cate[index].toString(),
-              style: formhintstyle.copyWith(fontSize: 10.0.sp),
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedIndex = index;
+                // index == selectedIndex? selectedcolor : Colors. transparent;
+              });
+            },
+            child: Container(
+              height: 3.0.hp,
+              decoration: BoxDecoration(
+                  color: selectedIndex == index
+                      ? selectedcolor
+                      : Colors.transparent,
+                  border: Border.all(color: Colors.white, width: 0.5.wp),
+                  borderRadius: BorderRadius.circular(20.0.sp)),
+              width: 5.0.wp,
+              alignment: Alignment.center,
+              child: Text(
+                cate[index].toString(),
+                style: formhintstyle.copyWith(fontSize: 10.0.sp),
+              ),
             ),
           );
         },

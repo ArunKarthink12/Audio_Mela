@@ -90,7 +90,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.sp),
                         borderSide: const BorderSide(
-                            color: Color(0xFFDDDCDC), width: 0.5),
+                            color: Colors.transparent, width: 0.5),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.sp),

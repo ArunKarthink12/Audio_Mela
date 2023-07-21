@@ -115,6 +115,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   //     ),
                   ),
             ),
+            SizedBox(
+              height: 2.0.hp,
+            ),
             Align(
               alignment: Alignment.center,
               child: Container(
@@ -124,8 +127,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       color: Color(0xffF77A55), fontSize: 14.0.sp),
                 ),
                 alignment: Alignment.center,
-                height: 8.0.hp,
-                width: MediaQuery.of(context).size.width - 10.0.wp,
+                height: 7.8.hp,
+                width: MediaQuery.of(context).size.width - 13.0.wp,
                 // 50.0.wp,
                 decoration: BoxDecoration(
                     border: Border.all(color: Color(0xffF77A55), width: 0.3.wp),

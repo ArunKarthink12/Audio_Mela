@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../homeScreen/controller/multiscreenController.dart';
+import '../../homeScreen/view/homemain.dart/screen_1.dart';
 import '../../homeScreen/view/widgets.dart';
 
 class EpisodeScreenNO extends StatefulWidget {
@@ -19,17 +21,23 @@ class EpisodeScreenNO extends StatefulWidget {
   State<EpisodeScreenNO> createState() => _EpisodeScreenNOState();
 }
 
-bool playBook = false;
+// bool playBook = false;
+MultiScreenController multiScreenController = Get.put(MultiScreenController());
 
 class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
+  deviceback() {
+    Get.to(HomeScreen());
+    multiScreenController.pages[2];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: playBook == true
+      bottomNavigationBar: multiScreenController.playBook == true
           ? Container(
-              height: 11.0.hp,
+              height: 12.0.hp,
               width: MediaQuery.of(context).size.width,
-              color: appcolor,
+              color: Color(0xff0F0F29).withOpacity(.8),
               child: Column(
                 children: [
                   ProgressBar(
@@ -74,138 +82,157 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                           ],
                         ),
                       ),
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Icon(
-                          Iconsax.play4,
-                        ),
+                      Container(
+                        height: 8.0.hp,
+                        width: 10.0.wp,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  "image/circleplay.png",
+                                )),
+                            shape: BoxShape.circle),
+                        // radius: 25.0.sp,
+                        // backgroundColor: Colors.transparent,
                       ),
                       GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              playBook = false;
-                            });
-                          },
-                          child: Icon(
-                            Icons.close,
-                            color: Colors.white24,
-                          ))
+                        onTap: () {
+                          setState(() {
+                            multiScreenController.playBook = false;
+                          });
+                        },
+                        child: Icon(
+                          Icons.close,
+                          color: Colors.white24,
+                        ),
+                      )
                     ],
                   ))
                 ],
               ),
             )
           : SizedBox(),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Color(0xff121212),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 4.0.hp,
-              ),
-              Container(
-                height: 10.0.hp,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      width: 17.0.wp,
-                      color: Colors.transparent,
-                      alignment: Alignment.centerLeft,
-                      child: IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios_new_outlined,
-                            color: Colors.white,
-                          )),
-                    ),
-                    Container(
-                      color: Colors.transparent,
-                      height: 4.0.hp,
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        "Harry Potter and the Sorc...",
-                        style: formhintstyle.copyWith(fontSize: 14.0.sp),
-                      ),
-                    ),
-                    Container(
+      body: WillPopScope(
+        onWillPop: () {
+          return deviceback();
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Color(0xff121212),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 4.0.hp,
+                ),
+                Container(
+                  height: 10.0.hp,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
                         width: 17.0.wp,
-                        alignment: Alignment.bottomRight,
                         color: Colors.transparent,
+                        alignment: Alignment.centerLeft,
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // Get.();
+                              Get.to(HomeScreen());
+                              multiScreenController.pages[2];
+                            },
                             icon: Icon(
-                              Icons.more_horiz,
+                              Icons.arrow_back_ios_new_outlined,
                               color: Colors.white,
-                            )))
+                            )),
+                      ),
+                      Container(
+                        color: Colors.transparent,
+                        height: 4.0.hp,
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          "Harry Potter and the Sorc...",
+                          style: formhintstyle.copyWith(fontSize: 14.0.sp),
+                        ),
+                      ),
+                      Container(
+                          width: 17.0.wp,
+                          alignment: Alignment.bottomRight,
+                          color: Colors.transparent,
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.more_horiz,
+                                color: Colors.transparent,
+                              )))
+                    ],
+                  ),
+                ),
+                // SizedBox(
+                //   height: 1.0.hp,
+                // ),
+                bookImage("image/Image Placeholder 240x240.png"),
+                SizedBox(
+                  height: 1.5.hp,
+                ),
+                bookDetails(context),
+                categories(),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    buttonz(
+                        "Play Audio", Color(0xff4838D1), Colors.transparent),
+                    SizedBox(
+                      width: 5.0.wp,
+                    ),
+                    buttonz(
+                        multiScreenController.playBook == false
+                            ? "ReadBook"
+                            : "Bookmark",
+                        Colors.transparent,
+                        Colors.white),
                   ],
                 ),
-              ),
-              // SizedBox(
-              //   height: 1.0.hp,
-              // ),
-              bookImage("image/Image Placeholder 240x240.png"),
-              SizedBox(
-                height: 1.5.hp,
-              ),
-              bookDetails(context),
-              categories(),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buttonz(Iconsax.play_circle, "Play Audio", Color(0xff4838D1),
-                      Colors.transparent),
-                  SizedBox(
-                    width: 10.0.wp,
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                Container(
+                  // height: 4.0.hp,
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.only(left: 22.0.sp),
+                  color: Colors.transparent,
+                  child: Text(
+                    "Episodes",
+                    style: formhintstyle.copyWith(fontSize: 18.0.sp),
                   ),
-                  buttonz(Icons.bookmark_border_outlined, "Bookmark",
-                      Colors.transparent, Colors.white),
-                ],
-              ),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              Container(
-                // height: 4.0.hp,
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.only(left: 22.0.sp),
-                color: Colors.transparent,
-                child: Text(
-                  "Episodes",
-                  style: formhintstyle.copyWith(fontSize: 18.0.sp),
                 ),
-              ),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              SizedBox(
-                height: 35.0.hp,
-                child: ListView.separated(
-                  padding: EdgeInsets.zero,
-                  separatorBuilder: (context, index) {
-                    return SizedBox(
-                      height: 2.0.wp,
-                    );
-                  },
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  // physics: NeverScrollableScrollPhysics(),
-                  // scrollDirection: Axis.vertical,
-                  itemBuilder: (context, index) {
-                    return episodeList(index);
-                  },
+                SizedBox(
+                  height: 2.0.hp,
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 60.0.hp,
+                  child: ListView.separated(
+                    padding: EdgeInsets.zero,
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: 2.0.wp,
+                      );
+                    },
+                    itemCount: 10,
+                    shrinkWrap: true,
+                    // physics: NeverScrollableScrollPhysics(),
+                    // scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      return episodeList(index);
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -214,15 +241,20 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
 
   Widget episodeList(index) {
     return Container(
+      alignment: Alignment.center,
+      height: 13.0.hp,
       decoration: BoxDecoration(
-          color: appcolor.withOpacity(0.9),
+          color: Color(0xff1C1C4D),
+
+          //  appcolor.withOpacity(0.9),
           borderRadius: BorderRadius.circular(7.0.sp)),
       width: MediaQuery.of(context).size.width,
       child: ListTile(
         leading: Stack(
           children: [
             SizedBox(
-              height: 35.0.hp,
+              height: 40.0.hp,
+              width: 20.0.wp,
               child: Image.asset(
                 "image/banner.png",
                 fit: BoxFit.cover,
@@ -235,8 +267,8 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                   "image/lock.png",
                   fit: BoxFit.cover,
                 ),
-                height: 35.0.hp,
-                width: 26.0.wp,
+                height: 40.0.hp,
+                width: 20.0.wp,
               ),
             ),
           ],
@@ -250,21 +282,29 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
           style: formhintstyle,
         ),
         trailing: GestureDetector(
-          onTap: () {
-            setState(() {
-              index == 0 ? playBook = true : Get.to(const PremiumScreen());
-              // Fluttertoast.showToast(msg: "Locked");
-            });
-          },
-          child: CircleAvatar(
-            backgroundColor: arrow,
-            radius: 14.0.sp,
-            child: Icon(
-              Iconsax.play4,
-              color: Colors.white,
+            onTap: () {
+              setState(() {
+                index == 0
+                    ? multiScreenController.playBook = true
+                    : Get.to(const PremiumScreen());
+                // Fluttertoast.showToast(msg: "Locked");
+              });
+            },
+            child: SizedBox(
+              height: 10.0.hp,
+              width: 12.0.wp,
+              child: Image.asset("image/sniparrow.png"),
+            )
+
+            // CircleAvatar(
+            //   backgroundColor: arrow,
+            //   radius: 14.0.sp,
+            //   child: Icon(
+            //     Iconsax.play4,
+            //     color: Colors.white,
+            //   ),
+            // ),
             ),
-          ),
-        ),
       ),
     );
   }
@@ -272,7 +312,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
   Widget categories() {
     return Container(
       margin: EdgeInsets.only(left: 22.0.sp),
-      height: 4.0.hp,
+      height: 4.5.hp,
       width: MediaQuery.of(context).size.width,
       child: ListView.separated(
         itemCount: 3,
@@ -285,23 +325,27 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         },
         itemBuilder: (context, index) {
           return Container(
-            height: 3.0.hp,
+            // height: 3.8.hp,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white, width: 0.5.wp),
                 borderRadius: BorderRadius.circular(20.0.sp)),
-            width: 20.0.wp,
+            // width: 20.5.wp,
             alignment: Alignment.center,
-            child: Text(
-              "1",
-              style: formhintstyle.copyWith(fontSize: 9.0.sp),
-            ),
+            child: Text("Static Data",
+                style: GoogleFonts.poppins(
+                    textStyle: TextStyle(
+                        fontSize: 9.0.sp,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600))
+                //  formhintstyle.copyWith(fontSize: 9.0.sp),
+                ),
           );
         },
       ),
     );
   }
 
-  Widget buttonz(icons, title, bgColor, borderColor) {
+  Widget buttonz(title, bgColor, borderColor) {
     return GestureDetector(
       onTap: () {
         title == "Play Audio" ? Get.to(PlayScreen()) : null;
@@ -315,9 +359,22 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icons,
-              color: Colors.white,
+            title == "Play Audio"
+                ? Icon(
+                    Iconsax.play_circle,
+                    color: Colors.white,
+                  )
+                : title == "Bookmark"
+                    ? SizedBox(
+                        height: 5.0.hp,
+                        width: 5.0.wp,
+                        child: Image.asset("image/ReadBook.png"))
+                    : Icon(
+                        Icons.bookmark,
+                        color: Colors.white,
+                      ),
+            SizedBox(
+              width: 2.0.wp,
             ),
             Text(
               title.toString(),
