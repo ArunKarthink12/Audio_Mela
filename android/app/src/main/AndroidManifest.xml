@@ -3,7 +3,7 @@
     <application
         android:label="audio_mela"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/audiomelalogo">
         <activity
             android:name=".MainActivity"
             android:exported="true"

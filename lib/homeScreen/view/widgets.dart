@@ -11,7 +11,7 @@ Widget bookImage(image) {
       image,
       fit: BoxFit.cover,
     ),
-    height: 35.0.hp,
+    height: 37.0.hp,
     width: 70.0.wp,
   );
 }

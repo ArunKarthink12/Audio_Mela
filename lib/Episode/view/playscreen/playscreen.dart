@@ -93,7 +93,7 @@ class _PlayScreenState extends State<PlayScreen> {
                   print('User selected a new time: $duration');
                 },
               ),
-              height: 5.0.hp,
+              height: 6.0.hp,
               width: 80.0.wp,
             ),
             SizedBox(

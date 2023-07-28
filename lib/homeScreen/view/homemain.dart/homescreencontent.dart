@@ -109,8 +109,9 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                 height: 2.0.hp,
               ),
               Container(
-                height: 33.0.hp,
+                height: 30.0.hp,
                 child: ListView.separated(
+                    shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return popularShow();
@@ -131,7 +132,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
               ),
               banner(),
               SizedBox(
-                height: 8.0.hp,
+                height: 5.0.hp,
               ),
             ],
           ),
@@ -146,9 +147,9 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         Get.to(const EpisodeScreenNO());
       },
       child: Container(
-        height: 150,
+        height: 30.0.hp,
         //  9.0.hp,
-        width: 31.0.wp,
+        width: 34.0.wp,
         // 25.0.wp,
         // alignment: Alignment.center,
         child: Column(
@@ -164,7 +165,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
               height: 18.0.hp,
               // 122,
               // // 20.0.hp,
-              width: 30.5.wp,
+              width: 34.5.wp,
               // 110,
               // 30.0.wp,
               // child: Image.network(
@@ -198,12 +199,8 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                         ),
                         Container(
                           height: 4.0.hp,
-                          width: 6.0.wp,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage("image/sniparrow.png"),
-                                  fit: BoxFit.cover)),
+                          width: 11.0.wp,
+                          child: Image.asset("image/Asset 4.png"),
                         )
                       ],
                     ),
@@ -262,87 +259,82 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         carouselController: _controller,
         options: CarouselOptions(
           autoPlay: true,
-          aspectRatio: 4.0,
-          enlargeCenterPage: false,
-          disableCenter: true,
+          // aspectRatio: 1.0,
+          enlargeCenterPage: false, aspectRatio: 1,
+          // disableCenter: true,
         ),
         items: image.map((i) {
           return Container(
-              child: Container(
             margin: EdgeInsets.all(5.0),
             child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                borderRadius: BorderRadius.all(Radius.circular(9.0)),
                 child: Stack(
+                  alignment: Alignment.bottomCenter,
                   children: <Widget>[
-                    Image.asset(i.toString(), fit: BoxFit.cover, width: 1000.0),
-                    Positioned(
-                      bottom: 0.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromARGB(200, 0, 0, 0),
-                              Color.fromARGB(0, 0, 0, 0)
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
-                          ),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: Colors
-                                        .white, // Change the color as per your requirement
-                                    width: 1.0, // Adjust the width as needed
+                    Container(
+                        // width: 80.0.wp,
+                        // height: 250,
+                        color: Colors.transparent,
+                        child: Image.asset(
+                          i.toString(),
+                          fit: BoxFit.cover,
+                        )),
+                    Container(
+                      // width: 10.0.wp,
+                      height: 10.0.hp,
+                      decoration: BoxDecoration(color: Colors.transparent),
+                      // padding: EdgeInsets.symmetric(
+                      //     vertical: 10.0, horizontal: 20.0),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 5.0.sp),
+                                  child: Text(
+                                    'Safe Area \nwith Young',
+                                    style: formhintstyle.copyWith(
+                                      fontSize: 12.0.sp,
+                                    ),
+                                    // TextStyle(
+                                    //   color: Colors.white,
+
+                                    //   fontWeight: FontWeight.bold,
+                                    // ),
                                   ),
                                 ),
-                              ),
-                              child: Text(
-                                'Safe Area \nwith Young',
-                                style: formhintstyle.copyWith(
-                                  fontSize: 12.0.sp,
+                                SizedBox(
+                                  height: 0.5.hp,
                                 ),
-                                // TextStyle(
-                                //   color: Colors.white,
-
-                                //   fontWeight: FontWeight.bold,
-                                // ),
-                              ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 20.0.sp),
+                                  child: Container(
+                                      height: .1.hp,
+                                      width: 15.0.wp,
+                                      color: Colors.white),
+                                ),
+                              ],
                             ),
-                            Container(
-                              height: 8.0.hp,
-                              width: 9.7.wp,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: AssetImage("image/sniparrow.png"),
-                                      fit: BoxFit.cover)),
-                            )
-                            // CircleAvatar(
-                            //   backgroundColor: arrow,
-                            //   radius: 14.0.sp,
-                            //   child:
-                            //       //  Image.asset("image/playarrow.png")
-                            //       Icon(
-                            //     Iconsax.play4,
-                            //     color: Colors.white,
-                            //   ),
-                            // )
-                          ],
-                        ),
+                          ),
+                          Expanded(child: SizedBox()),
+                          Container(
+                            height: 4.0.hp,
+                            width: 11.0.wp,
+                            child: Image.asset("image/Asset 4.png"),
+                          ),
+                          SizedBox(
+                            width: 2.0.wp,
+                          )
+                        ],
                       ),
                     ),
                   ],
                 )),
-          ));
+          );
         }).toList(),
       ),
     );

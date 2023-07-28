@@ -78,9 +78,9 @@ class _PremiumScreenState extends State<PremiumScreen> {
               Column(
                 children: [
                   Stack(children: [
+                    unLimited(),
                     Icon(Icons.check,
                         color: check == 1 ? Colors.green : Colors.transparent),
-                    unLimited()
                   ]),
                   SizedBox(
                     height: 3.0.hp,
@@ -126,67 +126,74 @@ class _PremiumScreenState extends State<PremiumScreen> {
 
   Widget unLimited() {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          check = 1;
-          print(check.toString());
-        });
-      },
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(
-            top: .0.sp,
-            right: 13.0.sp,
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                height: 4.0.hp,
-                width: 24.0.wp,
-                decoration: BoxDecoration(
-                    color: Color(0xffFFCF32),
-                    borderRadius: BorderRadius.circular(5.0.sp)),
-                alignment: Alignment.center,
-                child: Text(
-                  "Most Popular",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff222C46),
-                      fontSize: 10.0.sp),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            height: 18.0.hp,
-            // alignment: Alignment.center,
+        onTap: () {
+          setState(() {
+            check = 1;
+            print(check.toString());
+          });
+        },
+        child: SizedBox(
             width: MediaQuery.of(context).size.width - 10.0.wp,
-            color: Colors.transparent,
-          ),
-          Container(
-            height: 15.0.hp,
-            alignment: Alignment.center,
-            width: MediaQuery.of(context).size.width - 10.0.wp,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0.sp),
-                border: Border.all(color: Colors.white30, width: 1.0.sp)),
-            child: ListTile(
-                title: Text(
-                  "Unlimited",
-                  style: formhintstyle.copyWith(fontSize: 13.0.sp),
-                ),
-                subtitle: Text(
-                  "For those who want to \nListen unlimited",
-                  style: formhintstyle.copyWith(fontSize: 13.0.sp),
-                ),
-                trailing: Text(
-                  "₹ 200",
-                  style: sub.copyWith(fontSize: 15.0.sp),
-                )),
-          ),
-        ],
-      ),
-    );
+            child: Image.asset("image/popular.png"))
+        // Stack(
+        //   alignment: Alignment.center,
+        //   children: [
+        //     Positioned(
+        //       // top: .0.sp,
+        //       bottom: 65.0.sp,
+        //       right: 13.0.sp,
+        //       child: Align(
+        //         alignment: Alignment.topRight,
+        //         child: Card(
+        //           color: Color(0xffFFCF32),
+        //           child: Container(
+        //             height: 4.0.hp,
+        //             width: 24.0.wp,
+        //             decoration: BoxDecoration(
+        //                 color: Color.fromARGB(255, 252, 193, 0),
+        //                 borderRadius: BorderRadius.circular(5.0.sp)),
+        //             alignment: Alignment.center,
+        //             // child: Text(
+        //             //   "Most Popular",
+        //             //   style: TextStyle(
+        //             //       fontWeight: FontWeight.w600,
+        //             //       color: Color(0xff222C46),
+        //             //       fontSize: 10.0.sp),
+        //             // ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //     Container(
+        //       height: 18.0.hp,
+        //       // alignment: Alignment.center,
+        //       width: MediaQuery.of(context).size.width - 10.0.wp,
+        //       color: Colors.transparent,
+        //     ),
+        //     Container(
+        //       height: 15.0.hp,
+        //       alignment: Alignment.center,
+        //       width: MediaQuery.of(context).size.width - 10.0.wp,
+        //       decoration: BoxDecoration(
+        //           borderRadius: BorderRadius.circular(8.0.sp),
+        //           border: Border.all(color: Colors.white30, width: 1.0.sp)),
+        //       child: ListTile(
+        //           title: Text(
+        //             "Unlimited",
+        //             style: formhintstyle.copyWith(fontSize: 13.0.sp),
+        //           ),
+        //           subtitle: Text(
+        //             "For those who want to \nListen unlimited",
+        //             style: formhintstyle.copyWith(fontSize: 13.0.sp),
+        //           ),
+        //           trailing: Text(
+        //             "₹ 200",
+        //             style: sub.copyWith(fontSize: 15.0.sp),
+        //           )),
+        //     ),
+        //   ],
+        // ),
+        );
   }
 
   Widget allEpisode() {
@@ -198,7 +205,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
         });
       },
       child: Container(
-        height: 15.0.hp,
+        height: 14.0.hp,
         alignment: Alignment.center,
         width: MediaQuery.of(context).size.width - 10.0.wp,
         decoration: BoxDecoration(

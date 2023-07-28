@@ -14,6 +14,7 @@ class PersonalizeSuggestion extends StatefulWidget {
 }
 
 class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
+  List placeholderlist = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,14 +65,6 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
                     height: 3.0.hp,
                   ),
                   Container(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: Text(
-                        "Placeholder",
-                        style: formhintstyle.copyWith(
-                            color: Color(0xff6A6A8B), fontSize: 11.5.sp),
-                      ),
-                    ),
                     height:
                         // 53,
                         7.8.hp,
@@ -80,6 +73,47 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
                     decoration: BoxDecoration(
                         color: Color(0xff1C1C4D),
                         borderRadius: BorderRadius.circular(5.0.sp)),
+                    child: Padding(
+                        padding: EdgeInsets.only(left: 10.0),
+                        child: selectedIndexes.isEmpty
+                            ? Text(
+                                "Placeholder",
+                                style: formhintstyle.copyWith(
+                                    color: Color(0xff6A6A8B),
+                                    fontSize: 11.5.sp),
+                              )
+                            : SizedBox(
+                                height: 4.0.hp,
+                                child: ListView.separated(
+                                  separatorBuilder: (context, index) {
+                                    return SizedBox(
+                                      width: 2.0.wp,
+                                    );
+                                  },
+                                  itemCount: selectedIndexes.length,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      // height: 2.0.hp,
+                                      decoration: BoxDecoration(
+                                          color: Colors.transparent,
+                                          border: Border.all(
+                                              color: Colors.white,
+                                              width: 0.5.wp),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0.sp)),
+                                      width: 20.0.wp,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        selectedIndexes[index].toString(),
+                                        style: formhintstyle.copyWith(
+                                            fontSize: 9.0.sp),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )),
                   ),
                   SizedBox(
                     height: 3.0.hp,
@@ -91,7 +125,7 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
                   multiButtons(
                     "Submit",
                     Color(0xff4838D1),
-                    Color(0xffFFFFFF).withOpacity(0.5),
+                    Colors.white,
                     Color(0xff1C1C4D),
                   ),
                   SizedBox(
@@ -145,8 +179,22 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
     "Technology",
     "Travel"
   ];
-  var selectedIndex;
+  // var selectedIndex;
   var selectedcolor = appcolor;
+
+  List<String> selectedIndexes = [];
+
+  void toggleSelect(String index) {
+    setState(() {
+      if (selectedIndexes.contains(index)) {
+        selectedIndexes.remove(index);
+      } else {
+        selectedIndexes.add(index);
+      }
+    });
+  }
+
+  // var selectedcolor = appcolor;
   Widget categoryList() {
     return Container(
       height: 30.0.hp,
@@ -161,19 +209,22 @@ class _PersonalizeSuggestionState extends State<PersonalizeSuggestion> {
             mainAxisSpacing: 12,
             childAspectRatio: 3),
         itemBuilder: (context, index) {
+          var isSelected = selectedIndexes.contains(cate[index].toString());
+
           return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = index;
-                // index == selectedIndex? selectedcolor : Colors. transparent;
-              });
-            },
+            onTap: () => toggleSelect(cate[index].toString()),
+            // {
+            //   setState(() {
+            //     selectedIndex = index;
+            //     placeholderlist.add(cate[selectedIndex]);
+            //     // placeholderlist.contains(cate[index])? placeholderlist[index]
+            //     // index == selectedIndex? selectedcolor : Colors. transparent;
+            //   });
+            // },
             child: Container(
               height: 3.0.hp,
               decoration: BoxDecoration(
-                  color: selectedIndex == index
-                      ? selectedcolor
-                      : Colors.transparent,
+                  color: isSelected ? selectedcolor : Colors.transparent,
                   border: Border.all(color: Colors.white, width: 0.5.wp),
                   borderRadius: BorderRadius.circular(20.0.sp)),
               width: 5.0.wp,

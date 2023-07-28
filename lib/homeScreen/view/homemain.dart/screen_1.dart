@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? Container(
                       height: 12.0.hp,
                       width: MediaQuery.of(context).size.width,
-                      color: appcolor,
+                      color: Color(0xff0F0F29).withOpacity(.9),
                       child: Column(
                         children: [
                           ProgressBar(
@@ -93,18 +93,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                               ),
-                              Container(
-                                height: 8.0.hp,
-                                width: 10.0.wp,
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                          "image/circleplay.png",
-                                        )),
-                                    shape: BoxShape.circle),
-                                // radius: 25.0.sp,
-                                // backgroundColor: Colors.transparent,
+                              CircleAvatar(
+                                child: SizedBox(
+                                    height: 5.0.hp,
+                                    width: 5.0.wp,
+                                    child:
+                                        Image.asset("image/Asset 3 (1).png")),
+                                radius: 15.0.sp,
+                                backgroundColor: Colors.white,
                               ),
                               GestureDetector(
                                 onTap: () {

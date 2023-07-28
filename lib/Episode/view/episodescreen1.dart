@@ -37,7 +37,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
           ? Container(
               height: 12.0.hp,
               width: MediaQuery.of(context).size.width,
-              color: Color(0xff0F0F29).withOpacity(.8),
+              color: Color(0xff0F0F29).withOpacity(.9),
               child: Column(
                 children: [
                   ProgressBar(
@@ -82,18 +82,13 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                           ],
                         ),
                       ),
-                      Container(
-                        height: 8.0.hp,
-                        width: 10.0.wp,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  "image/circleplay.png",
-                                )),
-                            shape: BoxShape.circle),
-                        // radius: 25.0.sp,
-                        // backgroundColor: Colors.transparent,
+                      CircleAvatar(
+                        child: SizedBox(
+                            height: 5.0.hp,
+                            width: 5.0.wp,
+                            child: Image.asset("image/Asset 3 (1).png")),
+                        radius: 15.0.sp,
+                        backgroundColor: Colors.white,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -116,11 +111,12 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         onWillPop: () {
           return deviceback();
         },
-        child: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Color(0xff121212),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            // height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: Color(0xff121212),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -190,7 +186,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                       width: 5.0.wp,
                     ),
                     buttonz(
-                        multiScreenController.playBook == false
+                        multiScreenController.playBook != false
                             ? "ReadBook"
                             : "Bookmark",
                         Colors.transparent,
@@ -211,12 +207,12 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                   ),
                 ),
                 SizedBox(
-                  height: 2.0.hp,
+                  height: 0.0.hp,
                 ),
                 SizedBox(
-                  height: 60.0.hp,
+                  // height: 10.0.hp,
                   child: ListView.separated(
-                    padding: EdgeInsets.zero,
+                    padding: EdgeInsets.all(12.0.sp),
                     separatorBuilder: (context, index) {
                       return SizedBox(
                         height: 2.0.wp,
@@ -224,8 +220,8 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                     },
                     itemCount: 10,
                     shrinkWrap: true,
-                    // physics: NeverScrollableScrollPhysics(),
-                    // scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
                       return episodeList(index);
                     },
@@ -242,7 +238,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
   Widget episodeList(index) {
     return Container(
       alignment: Alignment.center,
-      height: 13.0.hp,
+      height: 11.0.hp,
       decoration: BoxDecoration(
           color: Color(0xff1C1C4D),
 
@@ -250,28 +246,31 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
           borderRadius: BorderRadius.circular(7.0.sp)),
       width: MediaQuery.of(context).size.width,
       child: ListTile(
-        leading: Stack(
-          children: [
-            SizedBox(
-              height: 40.0.hp,
-              width: 20.0.wp,
-              child: Image.asset(
-                "image/banner.png",
-                fit: BoxFit.cover,
-              ),
-            ),
-            Visibility(
-              visible: index == 0 ? false : true,
-              child: Container(
+        leading: SizedBox(
+          height: 16.0.hp,
+          child: Stack(
+            children: [
+              SizedBox(
+                // height: 16.0.hp,
+                width: 21.0.wp,
                 child: Image.asset(
-                  "image/lock.png",
+                  "image/episode1.png",
                   fit: BoxFit.cover,
                 ),
-                height: 40.0.hp,
-                width: 20.0.wp,
               ),
-            ),
-          ],
+              Visibility(
+                visible: index == 0 ? false : true,
+                child: Container(
+                  child: Image.asset(
+                    "image/lock.png",
+                    fit: BoxFit.cover,
+                  ),
+                  height: 16.0.hp,
+                  width: 21.0.wp,
+                ),
+              ),
+            ],
+          ),
         ),
         title: Text(
           "The Black Witch",
@@ -290,11 +289,27 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                 // Fluttertoast.showToast(msg: "Locked");
               });
             },
-            child: SizedBox(
-              height: 10.0.hp,
-              width: 12.0.wp,
-              child: Image.asset("image/sniparrow.png"),
-            )
+            child: index == 0
+                ? multiScreenController.playBook != true
+                    ? SizedBox(
+                        height: 8.0.hp,
+                        width: 9.0.wp,
+                        child: Image.asset("image/Asset 4.png"))
+                    : SizedBox(
+                        width: 9.0.wp,
+                        child: CircleAvatar(
+                          radius: 13.0.sp,
+                          backgroundColor: Color(0xff4838D1),
+                          child: Icon(
+                            Icons.pause,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                : SizedBox(
+                    height: 8.0.hp,
+                    width: 9.0.wp,
+                    child: Image.asset("image/Asset 4.png"))
 
             // CircleAvatar(
             //   backgroundColor: arrow,
@@ -326,9 +341,12 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
         itemBuilder: (context, index) {
           return Container(
             // height: 3.8.hp,
+            height: 3.0.hp,
+            width: 20.0.wp,
+
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white, width: 0.5.wp),
-                borderRadius: BorderRadius.circular(20.0.sp)),
+                borderRadius: BorderRadius.circular(8.0.sp)),
             // width: 20.5.wp,
             alignment: Alignment.center,
             child: Text("Static Data",
@@ -364,7 +382,7 @@ class _EpisodeScreenNOState extends State<EpisodeScreenNO> {
                     Iconsax.play_circle,
                     color: Colors.white,
                   )
-                : title == "Bookmark"
+                : title != "Bookmark"
                     ? SizedBox(
                         height: 5.0.hp,
                         width: 5.0.wp,

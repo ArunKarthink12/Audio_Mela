@@ -37,7 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
               Container(
                 height:
                     // 53,
-                    7.0.hp,
+                    7.5.hp,
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
@@ -54,11 +54,13 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.sp),
-                        borderSide: BorderSide(color: appcolor, width: 1),
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 1),
                       ),
                       disabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.sp),
-                        borderSide: const BorderSide(color: appcolor, width: 1),
+                        borderSide: const BorderSide(
+                            color: Colors.transparent, width: 1),
                       ),
                       hintText: 'Search Books or Author...',
                       contentPadding: const EdgeInsets.all(10),

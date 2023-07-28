@@ -77,7 +77,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               Container(
                 height:
                     // 53,
-                    7.0.hp,
+                    7.5.hp,
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.centerLeft,
                 decoration: BoxDecoration(
@@ -94,11 +94,13 @@ class _LibraryScreenState extends State<LibraryScreen> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.sp),
-                        borderSide: BorderSide(color: appcolor, width: 1),
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 1),
                       ),
                       disabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.sp),
-                        borderSide: const BorderSide(color: appcolor, width: 1),
+                        borderSide:
+                            BorderSide(color: Colors.transparent, width: 1),
                       ),
                       hintText: 'Search Books or Author...',
                       contentPadding: const EdgeInsets.all(10),
@@ -146,52 +148,69 @@ class _LibraryScreenState extends State<LibraryScreen> {
         Get.to(const EpisodeScreenNO());
       },
       child: Container(
-        decoration: BoxDecoration(
-            color: appcolor.withOpacity(0.9),
-            borderRadius: BorderRadius.circular(7.0.sp)),
-        width: MediaQuery.of(context).size.width,
-        child: ListTile(
-          leading: SizedBox(
-            height: 35.0.hp,
-            child: Image.asset(
-              template[index].toString(),
-              fit: BoxFit.cover,
-            ),
-          ),
-          title: Text(
-            "The Black Witch",
-            style: formhintstyle.copyWith(fontSize: 14.0.sp),
-          ),
-          subtitle: Text("Barrack Obama",
-              style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                      fontSize: 8.0.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400))
-              //  formhintstyle.copyWith(fontSize: 10.0.sp),
+          height: 14.0.hp,
+          decoration: BoxDecoration(
+              color: Color(0xff1C1C4D),
+              borderRadius: BorderRadius.circular(7.0.sp)),
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(10.0.sp),
+                child: SizedBox(
+                  // height: 15.0.hp,
+                  width: 23.0.wp,
+                  child: Image.asset(
+                    template[index].toString(),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
-        ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "The Black Witch",
+                    style: formhintstyle.copyWith(fontSize: 14.0.sp),
+                  ),
+                  SizedBox(
+                    height: 1.0.hp,
+                  ),
+                  Text("Barrack Obama",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontSize: 8.0.sp,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400))
+                      //  formhintstyle.copyWith(fontSize: 10.0.sp),
+                      ),
+                ],
+              )
+            ],
+          )
 
-        // Column(
-        //   children: [
-        //     SizedBox(
-        //       height: 25.0.hp,
-        //       // width: 50.0.wp,
-        //       child: Image.asset(
-        //         "image/banner.png",
-        //         fit: BoxFit.cover,
-        //       ),
-        //     ),
-        //     SizedBox(
-        //       height: 2.0.hp,
-        //     ),
-        //     Text(
-        //       "The Prisoner’s Key",
-        //       style: formhintstyle,
-        //     )
-        //   ],
-        // ),
-      ),
+          // Column(
+          //   children: [
+          //     SizedBox(
+          //       height: 25.0.hp,
+          //       // width: 50.0.wp,
+          //       child: Image.asset(
+          //         "image/banner.png",
+          //         fit: BoxFit.cover,
+          //       ),
+          //     ),
+          //     SizedBox(
+          //       height: 2.0.hp,
+          //     ),
+          //     Text(
+          //       "The Prisoner’s Key",
+          //       style: formhintstyle,
+          //     )
+          //   ],
+          // ),
+          ),
     );
   }
 }
