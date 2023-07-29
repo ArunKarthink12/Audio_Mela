@@ -272,7 +272,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                   alignment: Alignment.bottomCenter,
                   children: <Widget>[
                     Container(
-                        // width: 80.0.wp,
+                        width: 80.0.wp,
                         // height: 250,
                         color: Colors.transparent,
                         child: Image.asset(
@@ -280,13 +280,9 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                           fit: BoxFit.cover,
                         )),
                     Container(
-                      // width: 10.0.wp,
                       height: 10.0.hp,
                       decoration: BoxDecoration(color: Colors.transparent),
-                      // padding: EdgeInsets.symmetric(
-                      //     vertical: 10.0, horizontal: 20.0),
                       child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
