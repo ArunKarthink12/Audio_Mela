@@ -6,6 +6,7 @@ import 'package:audio_mela/homeScreen/view/homemain.dart/libraryscreen.dart';
 import 'package:audio_mela/homeScreen/view/homemain.dart/searchscreen.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,8 +22,6 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
-var currentindex = 0;
 
 class _HomeScreenState extends State<HomeScreen> {
   // bool playBook = false;
@@ -124,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   // selectedLabelStyle: formhintstyle.copyWith(color: Colors.white),
                   // unselectedLabelStyle: formhintstyle.copyWith(color: Colors.white),
                   backgroundColor: Color(0xff0F0F29),
-                  currentIndex: currentindex,
+                  currentIndex: multiScreenController.currentindex,
                   selectedItemColor: Colors.white,
                   unselectedItemColor: Color(0xffBBB1FA),
                   selectedFontSize: 12.0.sp,
@@ -132,12 +131,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   iconSize: 20.0.sp,
                   showUnselectedLabels: true,
                   onTap: (v) {
-                    currentindex = v;
+                    multiScreenController.currentindex = v;
                     setState(() {});
                   },
                   items: [
                     BottomNavigationBarItem(
-                        icon: currentindex == 0
+                        icon: multiScreenController.currentindex == 0
                             ? SizedBox(
                                 height: 3.0.hp,
                                 width: 5.0.wp,
@@ -150,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Image.asset("image/unselectHome.png")),
                         label: "Home"),
                     BottomNavigationBarItem(
-                      icon: currentindex == 1
+                      icon: multiScreenController.currentindex == 1
                           ? SizedBox(
                               height: 4.0.hp,
                               width: 6.0.wp,
@@ -162,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: "Search",
                     ),
                     BottomNavigationBarItem(
-                      icon: currentindex == 2
+                      icon: multiScreenController.currentindex == 2
                           ? SizedBox(
                               height: 4.0.hp,
                               width: 6.0.wp,
@@ -239,7 +238,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     //     fontSize: 18.0.sp,
                     //     letterSpacing: 1.6)),
                     TextSpan(
-                        text: currentindex == 2 ? "book" : "mela",
+                        text: multiScreenController.currentindex == 2
+                            ? "book"
+                            : "mela",
                         style: inter.copyWith(
                             fontSize: 18.0.sp, letterSpacing: 1.6))
                   ]),
@@ -248,11 +249,53 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        body: Container(
-          height: multiScreenController.playBook == true
-              ? MediaQuery.of(context).size.height - 30.0.hp
-              : MediaQuery.of(context).size.height - 17.0.hp,
-          child: multiScreenController.pages[currentindex],
+        body: WillPopScope(
+          onWillPop: () {
+            return back();
+          },
+          child: Container(
+            height: multiScreenController.playBook == true
+                ? MediaQuery.of(context).size.height - 30.0.hp
+                : MediaQuery.of(context).size.height - 17.0.hp,
+            child:
+                multiScreenController.pages[multiScreenController.currentindex],
+          ),
         ));
+  }
+
+  Future<bool> showExitPopup() async {
+    return await showDialog(
+          //show confirm dialogue
+          //the return value will be from "Yes" or "No" options
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Exit App'),
+            content: Text('Do you want to exit an App?'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                //return false when click on "NO"
+                child: Text('No'),
+              ),
+              ElevatedButton(
+                onPressed: () =>
+                    SystemNavigator.pop(), //return true when click on "Yes"
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        ) ??
+        false; //if showDialouge had returned null, then return false
+  }
+
+  back() {
+    if (multiScreenController.currentindex == 0) {
+      showExitPopup();
+
+      // setState(() {});
+    } else {
+      multiScreenController.currentindex = 0;
+      setState(() {});
+    }
   }
 }

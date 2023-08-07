@@ -3,6 +3,7 @@ import 'package:audio_mela/constant/responsive.dart';
 import 'package:audio_mela/constant/styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -83,58 +84,86 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        color: Color(0xff121212),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              topic("Categories"),
-              SizedBox(
-                height: 2.0.hp,
+  Future<bool> showExitPopup() async {
+    return await showDialog(
+          //show confirm dialogue
+          //the return value will be from "Yes" or "No" options
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Exit App'),
+            content: Text('Do you want to exit an App?'),
+            actions: [
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                //return false when click on "NO"
+                child: Text('No'),
               ),
-              categories(),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              banner(),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              topic("Popular show"),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              Container(
-                height: 30.0.hp,
-                child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return popularShow();
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        width: 3.0.wp,
-                      );
-                    },
-                    itemCount: 10),
-              ),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              topic("Recommended For You"),
-              SizedBox(
-                height: 2.0.hp,
-              ),
-              banner(),
-              SizedBox(
-                height: 5.0.hp,
+              ElevatedButton(
+                onPressed: () =>
+                    SystemNavigator.pop(), //return true when click on "Yes"
+                child: Text('Yes'),
               ),
             ],
+          ),
+        ) ??
+        false; //if showDialouge had returned null, then return false
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: showExitPopup,
+      child: SingleChildScrollView(
+        child: Container(
+          color: Color(0xff121212),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                topic("Categories"),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                categories(),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                banner(),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                topic("Popular show"),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                Container(
+                  height: 30.0.hp,
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return popularShow();
+                      },
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          width: 3.0.wp,
+                        );
+                      },
+                      itemCount: 10),
+                ),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                topic("Recommended For You"),
+                SizedBox(
+                  height: 2.0.hp,
+                ),
+                banner(),
+                SizedBox(
+                  height: 5.0.hp,
+                ),
+              ],
+            ),
           ),
         ),
       ),
